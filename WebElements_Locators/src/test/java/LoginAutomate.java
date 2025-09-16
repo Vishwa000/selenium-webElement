@@ -34,7 +34,7 @@ public class LoginAutomate {
 
 			String text = list.getText();
 
-			System.out.println(text);
+			System.out.println(text + "\n");
 		}
 
 		WebElement emailTwo = browser.findElement(By.xpath("//input[@name='email']"));
@@ -46,21 +46,36 @@ public class LoginAutomate {
 
 			emailTwo.sendKeys("Akash@gamil.com");
 
-			System.out.println("email id is updated");
+			System.out.println(emailTwo.isDisplayed());
 
 		}
+
 		WebElement passTwo = browser.findElement(By.xpath("//input[contains(@placeholder,'Password')]"));
 		passTwo.sendKeys("vishwa@86524");
 
-		WebElement loginClickTwo = browser.findElement(By.xpath("//button[text()='Log in']"));
+//		WebElement loginClickTwo = browser.findElement(By.xpath("//button[text()='Log in']"));
+//
+//		if (loginClickTwo.isEnabled()) {
+//
+//			loginClickTwo.click(); // its check the botton enable or not
+//			System.out.println("login button is enabled");
+//
+//		} else {
+//			System.out.println("Login button is disabled");
+//		}
 
-		if (loginClickTwo.isEnabled()) {
+		WebElement clickSignUp = browser
+				.findElement(By.xpath("//a[contains(@href,'/r.php?locale=en_GB&display=page')]"));
+		clickSignUp.click();
 
-			loginClickTwo.click(); // its check the botton enable or not
-			System.out.println("login button is enabled");
+		WebElement selectFemale = browser.findElement(By.xpath("//input[@type='radio' and @value='1']"));
+		selectFemale.click();
 
-		} else {
-			System.out.println("Login button is disabled");
+		WebElement selectMale = browser.findElement(By.xpath("//input[@type='radio' and @value='2']"));
+//		selectMale.click();
+
+		if (selectFemale.isSelected()) {
+			selectMale.click();
 		}
 
 		Thread.sleep(3000);
