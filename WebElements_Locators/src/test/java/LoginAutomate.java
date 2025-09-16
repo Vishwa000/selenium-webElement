@@ -52,7 +52,7 @@ public class LoginAutomate {
 		WebElement passTwo = browser.findElement(By.xpath("//input[contains(@placeholder,'Password')]"));
 		passTwo.sendKeys("vishwa@86524");
 
-		WebElement loginClickTwo = browser.findElement(By.xpath("//button[@id='loginbutton']"));
+		WebElement loginClickTwo = browser.findElement(By.xpath("//button[text()='Log in']"));
 
 		if (loginClickTwo.isEnabled()) {
 
