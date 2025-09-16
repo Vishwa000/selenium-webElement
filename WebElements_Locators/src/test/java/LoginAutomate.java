@@ -16,17 +16,17 @@ public class LoginAutomate {
 
 		browser.get("https://www.facebook.com/");
 
+		browser.manage().window().maximize();
+
 		WebElement email = browser.findElement(By.id("email"));
-		email.sendKeys("vichuvishwa004@gmail.com");
-
 		WebElement password = browser.findElement(By.name("pass"));
-		password.sendKeys("VichuVishwa@46");
-
+		WebElement loginClick = browser.findElement(By.partialLinkText("Log"));
 //		WebElement loginClick = browser.findElement(By.linkText("Log in"));
-//		loginClick.click();
 
-		browser.findElement(By.partialLinkText("Log")).click();
-		// loginClick.click();
+		email.sendKeys("vichuvishwa004@gmail.com");
+		password.sendKeys("VichuVishwa@46");
+		loginClick.click();
+//		loginClick.click();
 
 		List<WebElement> listName = browser.findElements(By.tagName("a"));
 
@@ -40,16 +40,27 @@ public class LoginAutomate {
 		WebElement emailTwo = browser.findElement(By.xpath("//input[@name='email']"));
 		emailTwo.sendKeys("vichu@gmail.com");
 
-		WebElement passTwo = browser.findElement(By.xpath("//input[@name='pass']"));
-		passTwo.sendKeys("vishwa@86524");
-
 		if (emailTwo.isDisplayed()) {
 
-			emailTwo.clear();
+			emailTwo.clear(); // its check the placeholder has value or not
 
 			emailTwo.sendKeys("Akash@gamil.com");
 
 			System.out.println("email id is updated");
+
+		}
+		WebElement passTwo = browser.findElement(By.xpath("//input[contains(@placeholder,'Password')]"));
+		passTwo.sendKeys("vishwa@86524");
+
+		WebElement loginClickTwo = browser.findElement(By.xpath("//button[@id='loginbutton']"));
+
+		if (loginClickTwo.isEnabled()) {
+
+			loginClickTwo.click(); // its check the botton enable or not
+			System.out.println("login button is enabled");
+
+		} else {
+			System.out.println("Login button is disabled");
 		}
 
 		Thread.sleep(3000);
